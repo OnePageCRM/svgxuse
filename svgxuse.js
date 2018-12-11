@@ -8,7 +8,9 @@
 /*global XDomainRequest, MutationObserver, window */
 (function () {
     "use strict";
-    if (typeof window !== "undefined" && window.addEventListener) {
+    var isIE = (navigator.userAgent.indexOf('MSIE') !== -1 || navigator.appVersion.indexOf('Trident/') > 0);
+
+    if (typeof window !== "undefined" && window.addEventListener && isIE) {
         var cache = Object.create(null); // holds xhr objects to prevent multiple requests
         var checkUseElems;
         var tid; // timeout id
